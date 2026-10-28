@@ -40,14 +40,13 @@ void ACXGameMode::StartWaitingCountdown()
 void ACXGameMode::HandleWaitingTimerTick()
 {
 	ACXGameStateBase* CXGameState = GetGameState<ACXGameStateBase>();
-	FString StateString = StaticEnum<EGameState>()->GetNameStringByValue((int64)CXGameState->GetGameState());
 	FString RemainingTimeString = FString::FromInt(CXGameState->GetRemainingTime());
 
 	for (const auto& CXPlayerController : AllPlayerControllers)
 	{
 		if (IsValid(CXPlayerController))
 		{
-			CXPlayerController->NotificationText = FText::FromString(StateString + TEXT(" / RemainingTime: ") + RemainingTimeString);
+			CXPlayerController->NotificationText = FText::FromString(TEXT("The game will start in ") + RemainingTimeString);
 		}
 	}
 
@@ -65,19 +64,31 @@ void ACXGameMode::StartPlayingState()
 	ACXGameStateBase* CXGameState = GetGameState<ACXGameStateBase>();
 	CXGameState->SetGameState(EGameState::Playing);
 	CXGameState->SetRemainingTime(30);
-	GetWorldTimerManager().SetTimer(GameTimerHandle, this, &ACXGameMode::HandlePlayingTimerTick, 1.0f, true);
-}
-void ACXGameMode::HandlePlayingTimerTick()
-{
-	ACXGameStateBase* CXGameState = GetGameState<ACXGameStateBase>();
-	FString StateString = StaticEnum<EGameState>()->GetNameStringByValue((int64)CXGameState->GetGameState());
-	FString RemainingTimeString = FString::FromInt(CXGameState->GetRemainingTime());
 
 	for (const auto& CXPlayerController : AllPlayerControllers)
 	{
 		if (IsValid(CXPlayerController))
 		{
-			CXPlayerController->NotificationText = FText::FromString(StateString + TEXT(" / RemainingTime: ") + RemainingTimeString);
+			CXPlayerController->NotificationText = FText::FromString(TEXT("Start!!"));
+		}
+	}
+
+	GetWorldTimerManager().SetTimer(GameTimerHandle, this, &ACXGameMode::HandlePlayingTimerTick, 1.0f, true);
+}
+void ACXGameMode::HandlePlayingTimerTick()
+{
+	ACXGameStateBase* CXGameState = GetGameState<ACXGameStateBase>();
+	int32 RemainingTime = CXGameState->GetRemainingTime();
+
+	if (RemainingTime < 20)
+	{
+		for (const auto& CXPlayerController : AllPlayerControllers)
+		{
+			if (IsValid(CXPlayerController))
+			{
+				FString RemainingTimeString = FString::FromInt(RemainingTime);
+				CXPlayerController->NotificationText = FText::FromString(RemainingTimeString);
+			}
 		}
 	}
 
