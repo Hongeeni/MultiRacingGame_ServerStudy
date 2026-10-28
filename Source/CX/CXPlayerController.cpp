@@ -1,4 +1,5 @@
 ﻿#include "CXPlayerController.h"
+#include "CXPlayerState.h"
 #include "CXPawn.h"
 #include "CXUI.h"
 #include "EngineUtils.h"
@@ -18,7 +19,7 @@ void ACXPlayerController::ServerToClient_ChatLog_Implementation(const TArray<FCh
 
 void ACXPlayerController::ClientToServer_ChatMessage_Implementation(const FString& Message)
 {
-	const FString PlayerName = PlayerState->GetPlayerName();
+	const FString PlayerName = Cast<ACXPlayerState>(PlayerState)->PlayerNameString;
 
 	if(UChatSubsystem* ChatSubsystem = GetWorld()->GetSubsystem<UChatSubsystem>())
 	{
@@ -51,6 +52,14 @@ void ACXPlayerController::BeginPlay()
 		return;
 	}
 	
+	if (IsValid(NotificationTextWidgetClass))
+	{
+		if (NotificationTextWidgetInstance = CreateWidget<UUserWidget>(this, NotificationTextWidgetClass))
+		{
+			NotificationTextWidgetInstance->AddToViewport();
+		}
+	}
+
 	// spawn the UI widget and add it to the viewport
 	VehicleUI = CreateWidget<UCXUI>(this, VehicleUIClass);
 	check(VehicleUI);
@@ -91,6 +100,7 @@ void ACXPlayerController::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
+	DOREPLIFETIME(ThisClass, NotificationText);
 	DOREPLIFETIME(ThisClass, VehiclePawn);
 }
 

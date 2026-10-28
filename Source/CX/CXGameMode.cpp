@@ -130,6 +130,14 @@ void ACXGameMode::PostLogin(APlayerController* NewPlayer)
 
 	if(ACXPlayerController* CXPlayerController = Cast<ACXPlayerController>(NewPlayer))
 	{
+		CXPlayerController->NotificationText = FText::FromString(TEXT("Connected to the game server."));
+		AllPlayerControllers.Add(CXPlayerController);
+
+		if (ACXPlayerState* CXPlayerState = CXPlayerController->GetPlayerState<ACXPlayerState>())
+		{
+			CXPlayerState->PlayerNameString = TEXT("Player") + FString::FromInt(AllPlayerControllers.Num());
+		}
+
 		if(UChatSubsystem* ChatSubsystem = GetWorld()->GetSubsystem<UChatSubsystem>())
 		{
 			const TArray<FChatData> ChatLog = ChatSubsystem->GetChatLog();

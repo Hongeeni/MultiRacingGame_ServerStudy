@@ -26,6 +26,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	FString GetPlayerStateInfo() const;
 
+	UPROPERTY(Replicated)
+	FString PlayerNameString;
+
 protected:
 	UPROPERTY(Replicated)
 	int32 Coins = 0;

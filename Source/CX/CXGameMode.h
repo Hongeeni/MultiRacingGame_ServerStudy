@@ -6,6 +6,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "CXGameMode.generated.h"
 
+class ACXPlayerController;
+
 UCLASS(MinimalAPI)
 class ACXGameMode : public AGameModeBase
 {
@@ -37,6 +39,8 @@ private:
 
 	UPROPERTY(EditDefaultsOnly)
 	FVector VehicleSpawnCheckOffset = FVector(0.0, 0.0, 80.0);
+
+	TArray<TObjectPtr<ACXPlayerController>> AllPlayerControllers;
 
 	FTimerHandle GameTimerHandle;
 	bool bWaitingCountdownStarted = false;

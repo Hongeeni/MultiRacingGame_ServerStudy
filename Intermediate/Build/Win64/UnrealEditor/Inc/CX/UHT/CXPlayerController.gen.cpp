@@ -19,6 +19,7 @@ CX_API UClass* Z_Construct_UClass_UCXUI_NoRegister();
 CX_API UScriptStruct* Z_Construct_UScriptStruct_FChatData();
 ENGINE_API UClass* Z_Construct_UClass_APlayerController();
 ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
+UMG_API UClass* Z_Construct_UClass_UUserWidget_NoRegister();
 UPackage* Z_Construct_UPackage__Script_CX();
 // End Cross Module References
 
@@ -223,6 +224,10 @@ struct Z_Construct_UClass_ACXPlayerController_Statics
 		{ "ToolTip", "Vehicle Player Controller class\nHandles input mapping and user interface" },
 #endif
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_NotificationText_MetaData[] = {
+		{ "Category", "CXPlayerController" },
+		{ "ModuleRelativePath", "CXPlayerController.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InputMappingContext_MetaData[] = {
 		{ "Category", "Input" },
 #if !UE_BUILD_SHIPPING
@@ -273,13 +278,24 @@ struct Z_Construct_UClass_ACXPlayerController_Statics
 		{ "ToolTip", "Type of the UI to spawn" },
 #endif
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_NotificationTextWidgetClass_MetaData[] = {
+		{ "Category", "CXPlayerController" },
+		{ "ModuleRelativePath", "CXPlayerController.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_NotificationTextWidgetInstance_MetaData[] = {
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "CXPlayerController.h" },
+	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FTextPropertyParams NewProp_NotificationText;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_InputMappingContext;
 	static void NewProp_bUseSteeringWheelControls_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_bUseSteeringWheelControls;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SteeringWheelInputMappingContext;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_VehiclePawn;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_VehicleUIClass;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_NotificationTextWidgetClass;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_NotificationTextWidgetInstance;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
@@ -293,6 +309,7 @@ struct Z_Construct_UClass_ACXPlayerController_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
+const UECodeGen_Private::FTextPropertyParams Z_Construct_UClass_ACXPlayerController_Statics::NewProp_NotificationText = { "NotificationText", nullptr, (EPropertyFlags)0x0010000000000034, UECodeGen_Private::EPropertyGenFlags::Text, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXPlayerController, NotificationText), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_NotificationText_MetaData), NewProp_NotificationText_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACXPlayerController_Statics::NewProp_InputMappingContext = { "InputMappingContext", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXPlayerController, InputMappingContext), Z_Construct_UClass_UInputMappingContext_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InputMappingContext_MetaData), NewProp_InputMappingContext_MetaData) };
 void Z_Construct_UClass_ACXPlayerController_Statics::NewProp_bUseSteeringWheelControls_SetBit(void* Obj)
 {
@@ -302,12 +319,17 @@ const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_ACXPlayerControl
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACXPlayerController_Statics::NewProp_SteeringWheelInputMappingContext = { "SteeringWheelInputMappingContext", nullptr, (EPropertyFlags)0x0020080000000015, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXPlayerController, SteeringWheelInputMappingContext), Z_Construct_UClass_UInputMappingContext_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SteeringWheelInputMappingContext_MetaData), NewProp_SteeringWheelInputMappingContext_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACXPlayerController_Statics::NewProp_VehiclePawn = { "VehiclePawn", nullptr, (EPropertyFlags)0x0124080000000020, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXPlayerController, VehiclePawn), Z_Construct_UClass_ACXPawn_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_VehiclePawn_MetaData), NewProp_VehiclePawn_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ACXPlayerController_Statics::NewProp_VehicleUIClass = { "VehicleUIClass", nullptr, (EPropertyFlags)0x0024080000000015, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXPlayerController, VehicleUIClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UCXUI_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_VehicleUIClass_MetaData), NewProp_VehicleUIClass_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ACXPlayerController_Statics::NewProp_NotificationTextWidgetClass = { "NotificationTextWidgetClass", nullptr, (EPropertyFlags)0x0024080000010001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXPlayerController, NotificationTextWidgetClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_NotificationTextWidgetClass_MetaData), NewProp_NotificationTextWidgetClass_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACXPlayerController_Statics::NewProp_NotificationTextWidgetInstance = { "NotificationTextWidgetInstance", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXPlayerController, NotificationTextWidgetInstance), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_NotificationTextWidgetInstance_MetaData), NewProp_NotificationTextWidgetInstance_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ACXPlayerController_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACXPlayerController_Statics::NewProp_NotificationText,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACXPlayerController_Statics::NewProp_InputMappingContext,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACXPlayerController_Statics::NewProp_bUseSteeringWheelControls,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACXPlayerController_Statics::NewProp_SteeringWheelInputMappingContext,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACXPlayerController_Statics::NewProp_VehiclePawn,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACXPlayerController_Statics::NewProp_VehicleUIClass,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACXPlayerController_Statics::NewProp_NotificationTextWidgetClass,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACXPlayerController_Statics::NewProp_NotificationTextWidgetInstance,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ACXPlayerController_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ACXPlayerController_Statics::DependentSingletons[])() = {
@@ -344,8 +366,10 @@ template<> CX_API UClass* StaticClass<ACXPlayerController>()
 }
 void ACXPlayerController::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const
 {
+	static const FName Name_NotificationText(TEXT("NotificationText"));
 	static const FName Name_VehiclePawn(TEXT("VehiclePawn"));
 	const bool bIsValid = true
+		&& Name_NotificationText == ClassReps[(int32)ENetFields_Private::NotificationText].Property->GetFName()
 		&& Name_VehiclePawn == ClassReps[(int32)ENetFields_Private::VehiclePawn].Property->GetFName();
 	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in ACXPlayerController"));
 }
@@ -358,10 +382,10 @@ ACXPlayerController::~ACXPlayerController() {}
 struct Z_CompiledInDeferFile_FID_CX_Source_CX_CXPlayerController_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACXPlayerController, ACXPlayerController::StaticClass, TEXT("ACXPlayerController"), &Z_Registration_Info_UClass_ACXPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACXPlayerController), 2506442043U) },
+		{ Z_Construct_UClass_ACXPlayerController, ACXPlayerController::StaticClass, TEXT("ACXPlayerController"), &Z_Registration_Info_UClass_ACXPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACXPlayerController), 1992980822U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CX_Source_CX_CXPlayerController_h_1192807099(TEXT("/Script/CX"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CX_Source_CX_CXPlayerController_h_3720742223(TEXT("/Script/CX"),
 	Z_CompiledInDeferFile_FID_CX_Source_CX_CXPlayerController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CX_Source_CX_CXPlayerController_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

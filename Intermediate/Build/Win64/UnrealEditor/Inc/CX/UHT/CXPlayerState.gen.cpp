@@ -134,6 +134,9 @@ struct Z_Construct_UClass_ACXPlayerState_Statics
 		{ "ModuleRelativePath", "Public/CXPlayerState.h" },
 		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_PlayerNameString_MetaData[] = {
+		{ "ModuleRelativePath", "Public/CXPlayerState.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Coins_MetaData[] = {
 		{ "ModuleRelativePath", "Public/CXPlayerState.h" },
 	};
@@ -141,6 +144,7 @@ struct Z_Construct_UClass_ACXPlayerState_Statics
 		{ "ModuleRelativePath", "Public/CXPlayerState.h" },
 	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FStrPropertyParams NewProp_PlayerNameString;
 	static const UECodeGen_Private::FIntPropertyParams NewProp_Coins;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_BonusMaxSpeed;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
@@ -155,9 +159,11 @@ struct Z_Construct_UClass_ACXPlayerState_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_ACXPlayerState_Statics::NewProp_PlayerNameString = { "PlayerNameString", nullptr, (EPropertyFlags)0x0010000000000020, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXPlayerState, PlayerNameString), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PlayerNameString_MetaData), NewProp_PlayerNameString_MetaData) };
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_ACXPlayerState_Statics::NewProp_Coins = { "Coins", nullptr, (EPropertyFlags)0x0020080000000020, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXPlayerState, Coins), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Coins_MetaData), NewProp_Coins_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ACXPlayerState_Statics::NewProp_BonusMaxSpeed = { "BonusMaxSpeed", nullptr, (EPropertyFlags)0x0020080000000020, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXPlayerState, BonusMaxSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BonusMaxSpeed_MetaData), NewProp_BonusMaxSpeed_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ACXPlayerState_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACXPlayerState_Statics::NewProp_PlayerNameString,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACXPlayerState_Statics::NewProp_Coins,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACXPlayerState_Statics::NewProp_BonusMaxSpeed,
 };
@@ -196,9 +202,11 @@ template<> CX_API UClass* StaticClass<ACXPlayerState>()
 }
 void ACXPlayerState::ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const
 {
+	static const FName Name_PlayerNameString(TEXT("PlayerNameString"));
 	static const FName Name_Coins(TEXT("Coins"));
 	static const FName Name_BonusMaxSpeed(TEXT("BonusMaxSpeed"));
 	const bool bIsValid = true
+		&& Name_PlayerNameString == ClassReps[(int32)ENetFields_Private::PlayerNameString].Property->GetFName()
 		&& Name_Coins == ClassReps[(int32)ENetFields_Private::Coins].Property->GetFName()
 		&& Name_BonusMaxSpeed == ClassReps[(int32)ENetFields_Private::BonusMaxSpeed].Property->GetFName();
 	checkf(bIsValid, TEXT("UHT Generated Rep Indices do not match runtime populated Rep Indices for properties in ACXPlayerState"));
@@ -212,10 +220,10 @@ ACXPlayerState::~ACXPlayerState() {}
 struct Z_CompiledInDeferFile_FID_CX_Source_CX_Public_CXPlayerState_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACXPlayerState, ACXPlayerState::StaticClass, TEXT("ACXPlayerState"), &Z_Registration_Info_UClass_ACXPlayerState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACXPlayerState), 4072047808U) },
+		{ Z_Construct_UClass_ACXPlayerState, ACXPlayerState::StaticClass, TEXT("ACXPlayerState"), &Z_Registration_Info_UClass_ACXPlayerState, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACXPlayerState), 2809213010U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CX_Source_CX_Public_CXPlayerState_h_134616136(TEXT("/Script/CX"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CX_Source_CX_Public_CXPlayerState_h_2694398386(TEXT("/Script/CX"),
 	Z_CompiledInDeferFile_FID_CX_Source_CX_Public_CXPlayerState_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CX_Source_CX_Public_CXPlayerState_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

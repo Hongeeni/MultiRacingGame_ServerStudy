@@ -31,8 +31,11 @@ protected:
 	UFUNCTION(Client, Reliable)
 	void ServerToClient_ChatMessage(const FString& Sender, const FString& Message);
 
-protected:
+public:
+	UPROPERTY(Replicated, BlueprintReadOnly)
+	FText NotificationText;
 
+protected:
 	/** Input Mapping Context to be used for player input */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input)
 	UInputMappingContext* InputMappingContext;
@@ -58,9 +61,15 @@ protected:
 	/** Pointer to the UI widget */
 	TObjectPtr<UCXUI> VehicleUI;
 
-	// Begin Actor interface
-protected:
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UUserWidget> NotificationTextWidgetClass;
 
+	UPROPERTY()
+	TObjectPtr<UUserWidget> NotificationTextWidgetInstance;
+
+	// Begin Actor interface
+
+protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const;
