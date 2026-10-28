@@ -1,0 +1,26 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"A:/UE5/CX/Content/StarterContent/Architecture/Floor_400x400.uasset",
+				"A:/UE5/CX/Content/RaceGame/UI/WBP_ChatUI.uasset",
+				"A:/UE5/CX/Content/VehicleTemplate/Blueprints/W_VehicleAdvUI.uasset",
+				"A:/UE5/CX/Content/VehicleTemplate/Input/Actions/IA_Attack.uasset",
+				"A:/UE5/CX/Content/VehicleTemplate/Blueprints/SportsCar/BP_SportsCar_Pawn.uasset",
+				"A:/UE5/CX/Content/VehicleTemplate/Input/IMC_Default.uasset",
+				"A:/UE5/CX/Content/RaceGame/Item/BP_CoinItem.uasset",
+				"A:/UE5/CX/Content/RaceGame/Item/BP_CXSpeedItem.uasset",
+				"A:/UE5/CX/Content/RaceGame/Item/BP_CXItemSpawner.uasset",
+				"A:/UE5/CX/Content/__ExternalActors__/VehicleTemplate/Maps/VehicleAdvExampleMap/A/25/95VJZ64BWJABF28PGCQC2Q.uasset",
+				"A:/UE5/CX/Content/__ExternalActors__/VehicleTemplate/Maps/VehicleAdvExampleMap/3/QO/YGP23XCWBDXLUNEAVJA3XW.uasset",
+				"A:/UE5/CX/Content/RaceGame/UI/WBP_NotificationText.uasset",
+				"A:/UE5/CX/Content/VehicleTemplate/Blueprints/BP_VehicleAdvPlayerController.uasset",
+				"A:/UE5/CX/Content/__ExternalActors__/VehicleTemplate/Maps/VehicleAdvExampleMap/A/U9/38SHTYWSD9L3HZJMP8GE4J.uasset",
+				"A:/UE5/CX/Content/__ExternalActors__/VehicleTemplate/Maps/VehicleAdvExampleMap/B/Q5/7X256LNRCGOPH150B94UT8.uasset"
+			]
+		}
+	]
+}
