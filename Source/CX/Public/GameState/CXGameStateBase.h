@@ -9,9 +9,11 @@ class ACXPlayerState;
 UENUM(BlueprintType)
 enum class EGameState : uint8
 {
+	None,
 	Wating,
 	Playing,
-	Finished
+	Finished,
+	End
 };
 
 UCLASS()
@@ -24,6 +26,8 @@ public:
 
 	void SetGameState(EGameState NewGameState);
 	void SetRemainingTime(int32 NewRemainingTime);
+
+	EGameState GetGameState();
 	int32 GetRemainingTime();
 
 protected:

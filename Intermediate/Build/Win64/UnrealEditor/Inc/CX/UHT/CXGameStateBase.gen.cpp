@@ -37,16 +37,20 @@ struct Z_Construct_UEnum_CX_EGameState_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
+		{ "End.Name", "EGameState::End" },
 		{ "Finished.Name", "EGameState::Finished" },
 		{ "ModuleRelativePath", "Public/GameState/CXGameStateBase.h" },
+		{ "None.Name", "EGameState::None" },
 		{ "Playing.Name", "EGameState::Playing" },
 		{ "Wating.Name", "EGameState::Wating" },
 	};
 #endif // WITH_METADATA
 	static constexpr UECodeGen_Private::FEnumeratorParam Enumerators[] = {
+		{ "EGameState::None", (int64)EGameState::None },
 		{ "EGameState::Wating", (int64)EGameState::Wating },
 		{ "EGameState::Playing", (int64)EGameState::Playing },
 		{ "EGameState::Finished", (int64)EGameState::Finished },
+		{ "EGameState::End", (int64)EGameState::End },
 	};
 	static const UECodeGen_Private::FEnumParams EnumParams;
 };
@@ -113,7 +117,7 @@ struct Z_Construct_UClass_ACXGameStateBase_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_ACXGameStateBase_Statics::NewProp_CurrentGameState_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_ACXGameStateBase_Statics::NewProp_CurrentGameState = { "CurrentGameState", nullptr, (EPropertyFlags)0x0020080000000020, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXGameStateBase, CurrentGameState), Z_Construct_UEnum_CX_EGameState, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CurrentGameState_MetaData), NewProp_CurrentGameState_MetaData) }; // 1997048936
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_ACXGameStateBase_Statics::NewProp_CurrentGameState = { "CurrentGameState", nullptr, (EPropertyFlags)0x0020080000000020, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXGameStateBase, CurrentGameState), Z_Construct_UEnum_CX_EGameState, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CurrentGameState_MetaData), NewProp_CurrentGameState_MetaData) }; // 594495047
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_ACXGameStateBase_Statics::NewProp_RemainingTime = { "RemainingTime", nullptr, (EPropertyFlags)0x0020080000000020, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXGameStateBase, RemainingTime), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_RemainingTime_MetaData), NewProp_RemainingTime_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACXGameStateBase_Statics::NewProp_Winners_Inner = { "Winners", nullptr, (EPropertyFlags)0x0104000000000000, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_ACXPlayerState_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_ACXGameStateBase_Statics::NewProp_Winners = { "Winners", nullptr, (EPropertyFlags)0x0114000000000020, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACXGameStateBase, Winners), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Winners_MetaData), NewProp_Winners_MetaData) };
@@ -177,13 +181,13 @@ ACXGameStateBase::~ACXGameStateBase() {}
 struct Z_CompiledInDeferFile_FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_Statics
 {
 	static constexpr FEnumRegisterCompiledInInfo EnumInfo[] = {
-		{ EGameState_StaticEnum, TEXT("EGameState"), &Z_Registration_Info_UEnum_EGameState, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1997048936U) },
+		{ EGameState_StaticEnum, TEXT("EGameState"), &Z_Registration_Info_UEnum_EGameState, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 594495047U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACXGameStateBase, ACXGameStateBase::StaticClass, TEXT("ACXGameStateBase"), &Z_Registration_Info_UClass_ACXGameStateBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACXGameStateBase), 580097357U) },
+		{ Z_Construct_UClass_ACXGameStateBase, ACXGameStateBase::StaticClass, TEXT("ACXGameStateBase"), &Z_Registration_Info_UClass_ACXGameStateBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACXGameStateBase), 3901606947U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_3610689488(TEXT("/Script/CX"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_1620323745(TEXT("/Script/CX"),
 	Z_CompiledInDeferFile_FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_Statics::ClassInfo),
 	nullptr, 0,
 	Z_CompiledInDeferFile_FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_Statics::EnumInfo));

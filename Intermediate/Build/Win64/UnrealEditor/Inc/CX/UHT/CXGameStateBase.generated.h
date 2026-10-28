@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define CX_CXGameStateBase_generated_h
 
-#define FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_20_INCLASS_NO_PURE_DECLS \
+#define FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_22_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesACXGameStateBase(); \
 	friend struct Z_Construct_UClass_ACXGameStateBase_Statics; \
@@ -31,7 +31,7 @@ public: \
 	NO_API virtual void ValidateGeneratedRepEnums(const TArray<struct FRepRecord>& ClassReps) const override;
 
 
-#define FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_20_ENHANCED_CONSTRUCTORS \
+#define FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_22_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ACXGameStateBase(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -45,12 +45,12 @@ public: \
 	NO_API virtual ~ACXGameStateBase();
 
 
-#define FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_17_PROLOG
-#define FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_20_GENERATED_BODY \
+#define FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_19_PROLOG
+#define FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_22_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_20_INCLASS_NO_PURE_DECLS \
-	FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_20_ENHANCED_CONSTRUCTORS \
+	FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_22_INCLASS_NO_PURE_DECLS \
+	FID_CX_Source_CX_Public_GameState_CXGameStateBase_h_22_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -62,9 +62,11 @@ template<> CX_API UClass* StaticClass<class ACXGameStateBase>();
 
 
 #define FOREACH_ENUM_EGAMESTATE(op) \
+	op(EGameState::None) \
 	op(EGameState::Wating) \
 	op(EGameState::Playing) \
-	op(EGameState::Finished) 
+	op(EGameState::Finished) \
+	op(EGameState::End) 
 
 enum class EGameState : uint8;
 template<> struct TIsUEnumClass<EGameState> { enum { Value = true }; };

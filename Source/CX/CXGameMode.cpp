@@ -13,6 +13,7 @@ ACXGameMode::ACXGameMode()
 {
 	PlayerControllerClass = ACXPlayerController::StaticClass();
 	PlayerStateClass = ACXPlayerState::StaticClass();
+	GameStateClass = ACXGameStateBase::StaticClass();
 }
 
 void ACXGameMode::BeginPlay()
@@ -39,6 +40,16 @@ void ACXGameMode::StartWaitingCountdown()
 void ACXGameMode::HandleWaitingTimerTick()
 {
 	ACXGameStateBase* CXGameState = GetGameState<ACXGameStateBase>();
+	FString StateString = StaticEnum<EGameState>()->GetNameStringByValue((int64)CXGameState->GetGameState());
+	FString RemainingTimeString = FString::FromInt(CXGameState->GetRemainingTime());
+
+	for (const auto& CXPlayerController : AllPlayerControllers)
+	{
+		if (IsValid(CXPlayerController))
+		{
+			CXPlayerController->NotificationText = FText::FromString(StateString + TEXT(" / RemainingTime: ") + RemainingTimeString);
+		}
+	}
 
 	const int32 NewRemainingTime = CXGameState->GetRemainingTime() - 1;
 	CXGameState->SetRemainingTime(NewRemainingTime);
@@ -59,6 +70,16 @@ void ACXGameMode::StartPlayingState()
 void ACXGameMode::HandlePlayingTimerTick()
 {
 	ACXGameStateBase* CXGameState = GetGameState<ACXGameStateBase>();
+	FString StateString = StaticEnum<EGameState>()->GetNameStringByValue((int64)CXGameState->GetGameState());
+	FString RemainingTimeString = FString::FromInt(CXGameState->GetRemainingTime());
+
+	for (const auto& CXPlayerController : AllPlayerControllers)
+	{
+		if (IsValid(CXPlayerController))
+		{
+			CXPlayerController->NotificationText = FText::FromString(StateString + TEXT(" / RemainingTime: ") + RemainingTimeString);
+		}
+	}
 
 	const int32 NewRemainingTime = CXGameState->GetRemainingTime() - 1;
 	CXGameState->SetRemainingTime(NewRemainingTime);
@@ -97,6 +118,28 @@ void ACXGameMode::FinishGame()
 	}
 
 	CXGameState->Winners = Winners;
+
+	if (Winners.Num() == 1)
+	{
+		for (const auto& CXPlayerController : AllPlayerControllers)
+		{
+			if (IsValid(CXPlayerController))
+			{
+				CXPlayerController->NotificationText = FText::FromString(Winners[0]->PlayerNameString + TEXT(" has won the game."));
+			}
+		}
+	}
+	else
+	{
+		for (const auto& CXPlayerController : AllPlayerControllers)
+		{
+			if (IsValid(CXPlayerController))
+			{
+				CXPlayerController->NotificationText = FText::FromString(TEXT("Draw..."));
+			}
+		}
+	}
+
 	CXGameState->SetRemainingTime(0);
 	CXGameState->SetGameState(EGameState::Finished);
 }
@@ -150,7 +193,7 @@ void ACXGameMode::PostLogin(APlayerController* NewPlayer)
 
 	Super::PostLogin(NewPlayer);
 
-	if (bWaitingCountdownStarted)
+	if (!bWaitingCountdownStarted)
 	{
 		StartWaitingCountdown();
 	}

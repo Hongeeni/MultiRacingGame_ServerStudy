@@ -30,6 +30,11 @@ void ACXGameStateBase::SetRemainingTime(int32 NewRemainingTime)
 	RemainingTime = FMath::Max(0, NewRemainingTime);
 }
 
+EGameState ACXGameStateBase::GetGameState()
+{
+	return CurrentGameState;
+}
+
 int32 ACXGameStateBase::GetRemainingTime()
 {
 	return RemainingTime;
